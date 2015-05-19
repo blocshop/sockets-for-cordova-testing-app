@@ -46,7 +46,8 @@ var SocketBatchesTest = (function () {
         var A_CHAR_CODE = "a".charCodeAt(0);
         for (var j = 0; j < NUMBER_OF_LINES; j++) {
             var data = new Uint8Array(NUMBER_OF_CHARS_PER_LINE + 2);
-            for (var i = 0; i < NUMBER_OF_CHARS_PER_LINE; i++) {
+            data[0] = "0".charCodeAt(0) + j;
+            for (var i = 1; i < NUMBER_OF_CHARS_PER_LINE; i++) {
                 var randomByte = A_CHAR_CODE + Math.floor(Math.random() * 26);
                 this.sentData.push(randomByte);
                 data[i] = randomByte;
