@@ -42,7 +42,9 @@
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
-            <button onclick="startTest()">Start Test</button>
+
+            <button onclick="startBatchesTest()">Start batches test</button>
+            <button onclick="startConnectionsTest()">Start connections test</button>
 
         </div>
         <script type="text/javascript" src="cordova.js"></script>
@@ -51,10 +53,25 @@
         <script type="text/javascript" src="js/socketOverWebSocket.js"></script>
         <script type="text/javascript" src="js/SocketTest.js"></script>
         <script type="text/javascript" src="js/SocketBatchesTest.js"></script>
+        <script type="text/javascript" src="js/SocketConnectionsTest.ts"></script>
 
         <script type="text/javascript">
-            function startTest() {
+            function startBatchesTest() {
                 var test = new SocketBatchesTest();
+                test.start(function (error) {
+                    if (error) {
+                        console.error("Test finished with error: " + error);
+                        alert("Test finished with error: " + error);
+                    }
+                    else {
+                        console.log("Test finished");
+                        alert("Test finished");
+                    }
+                });
+            }
+
+            function startConnectionsTest() {
+                var test = new SocketConnectionsTest();
                 test.start(function (error) {
                     if (error) {
                         console.error("Test finished with error: " + error);
